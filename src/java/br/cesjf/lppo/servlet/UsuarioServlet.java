@@ -36,7 +36,8 @@ public class UsuarioServlet extends HttpServlet {
          if (request.getServletPath().contains("/editar.html")) {
             doEditarGet(request, response);
         } else if(request.getServletPath().contains("/excluir.html")){
-            
+            doExcluirGet(request, response);
+             response.sendRedirect("listar.html");
         } else if(request.getServletPath().contains("/listar.html")){
             doListarGet(request, response);
         } else if(request.getServletPath().contains("/criar.html")){
@@ -114,6 +115,18 @@ public class UsuarioServlet extends HttpServlet {
             response.sendRedirect("listar.html");
 
         }
+    }
+
+    private void doExcluirGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            UsuarioJpaController dao = new UsuarioJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+
+            dao.destroy(id);
+        } catch (Exception ex) {
+            response.sendRedirect("listar.html");
+        }
+        
     }
 
 

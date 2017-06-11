@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.annotation.Resources;
 import javax.persistence.EntityManagerFactory;
@@ -38,7 +40,7 @@ public class UsuarioServlet extends HttpServlet {
         } else if(request.getServletPath().contains("/listar.html")){
             doListarGet(request, response);
         } else if(request.getServletPath().contains("/criar.html")){
-            
+            doCriarGet(request, response);
         }
         
     }
@@ -46,7 +48,11 @@ public class UsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+         if (request.getServletPath().contains("/editar.html")) {
+            
+        } if (request.getServletPath().contains("/criar.html")) {
+            doCriarPost(request, response);
+        } 
         
     }
 
@@ -58,6 +64,25 @@ public class UsuarioServlet extends HttpServlet {
         
         request.setAttribute("usuarios", usuarios);
         request.getRequestDispatcher("WEB-INF/listar-usuarios.jsp").forward(request, response);
+    }
+
+    private void doCriarGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            request.getRequestDispatcher("WEB-INF/cria-usuario.jsp").forward(request, response);
+    }
+
+    private void doCriarPost(HttpServletRequest request, HttpServletResponse response) {
+        Usuario usuario1 = new Usuario();
+        usuario1.setNomecompleto(request.getParameter("nomecompleto"));
+        usuario1.setEmail(request.getParameter("email"));
+        usuario1.setSenha(request.getParameter("senha"));
+
+        UsuarioJpaController dao = new UsuarioJpaController(ut, emf);
+        try {
+            dao.create(usuario1);
+            response.sendRedirect("listar.html");
+        } catch (Exception ex) {
+            Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 

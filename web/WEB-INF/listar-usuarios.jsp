@@ -22,7 +22,7 @@
             </tr>
             <c:forEach var="usuario" items="${usuarios}">
             <tr>
-                <td>${usuario.id}</a></td>
+                <td><a href="editar.html?id=${usuario.id}">${usuario.id}</a></td>
                 <td>${usuario.nomecompleto}</td>
                 <td>${usuario.email}</td>
             </tr>

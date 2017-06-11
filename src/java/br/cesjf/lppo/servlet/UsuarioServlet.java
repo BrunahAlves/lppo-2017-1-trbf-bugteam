@@ -34,7 +34,7 @@ public class UsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          if (request.getServletPath().contains("/editar.html")) {
-            
+            doEditarGet(request, response);
         } else if(request.getServletPath().contains("/excluir.html")){
             
         } else if(request.getServletPath().contains("/listar.html")){
@@ -49,7 +49,7 @@ public class UsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          if (request.getServletPath().contains("/editar.html")) {
-            
+            doEditarPost(request, response);
         } if (request.getServletPath().contains("/criar.html")) {
             doCriarPost(request, response);
         } 
@@ -82,6 +82,37 @@ public class UsuarioServlet extends HttpServlet {
             response.sendRedirect("listar.html");
         } catch (Exception ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void doEditarGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+            try {
+            UsuarioJpaController dao = new UsuarioJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+            Usuario usuario = dao.findUsuario(id);
+            request.setAttribute("usuario", usuario);
+            request.getRequestDispatcher("WEB-INF/editar-usuario.jsp").forward(request, response);
+        } catch (Exception e) {
+            response.sendRedirect("listar.html");
+
+        }
+    }
+
+    private void doEditarPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            UsuarioJpaController dao = new UsuarioJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+            Usuario usuario = dao.findUsuario(id);
+            usuario.setNomecompleto(request.getParameter("nomecompleto"));
+            usuario.setEmail(request.getParameter("email"));
+            usuario.setSenha(request.getParameter("senha"));
+            dao.edit(usuario);
+            
+            response.sendRedirect("listar.html");
+
+        } catch (Exception e) {
+            response.sendRedirect("listar.html");
+
         }
     }
 

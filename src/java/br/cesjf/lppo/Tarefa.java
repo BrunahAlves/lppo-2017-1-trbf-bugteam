@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class Tarefa implements Serializable { 
@@ -15,7 +16,9 @@ public class Tarefa implements Serializable {
     private Long id;
     private String titulo;
     private String descricao;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_concluir;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_conclusao;
 
     public Long getId() {

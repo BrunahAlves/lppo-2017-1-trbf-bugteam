@@ -37,7 +37,8 @@ public class EtiquetaServlet extends HttpServlet {
         if (request.getServletPath().contains("/editarEtiqueta.html")) {
             doEditarGet(request, response);
         } else if (request.getServletPath().contains("/excluirEtiqueta.html")) {
-
+            doExcluirGet(request, response);
+            response.sendRedirect("listarEtiqueta.html");
         } else if (request.getServletPath().contains("/listarEtiqueta.html")) {
             doListarGet(request, response);
         } else if (request.getServletPath().contains("/criarEtiqueta.html")) {
@@ -114,6 +115,17 @@ public class EtiquetaServlet extends HttpServlet {
         } catch (Exception e) {
             response.sendRedirect("listarEtiqueta.html");
 
+        }
+    }
+
+    private void doExcluirGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+
+            dao.destroy(id);
+        } catch (Exception ex) {
+            response.sendRedirect("listarEtiqueta.html");
         }
     }
 }

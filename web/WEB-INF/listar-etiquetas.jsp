@@ -17,18 +17,20 @@
         <table>
             <tr>
                 <th>Id</th>
-                <th>Referência para um autor</th>
-                <th>Referência para uma tarefa</th>
-                <th>Título</th>
-            </tr>
-            <c:forEach var="etiqueta" items="${etiquetas}">
+                <th>Referência para um autor</th><br>
+                <th>Referência para uma tarefa</th><br>
+                <th>Título</th><br>
+                <th>Ações</th>
+        </tr>
+        <c:forEach var="etiqueta" items="${etiquetas}">
             <tr>
                 <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
                 <td>${etiqueta.referencia_autor}</td>
                 <td>${etiqueta.referencia_tarefa}</td>
                 <td>${etiqueta.titulo}</td>
-            </tr>
-            </c:forEach>
-        </table>
-    </body>
+                <td><a href="excluirEtiqueta.html?id=${etiqueta.id}">&#128465;</a></td>
+        </tr>
+    </c:forEach>
+</table>
+</body>
 </html>

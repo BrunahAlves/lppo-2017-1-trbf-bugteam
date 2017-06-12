@@ -23,7 +23,7 @@
             </tr>
             <c:forEach var="etiqueta" items="${etiquetas}">
             <tr>
-                <td>${etiqueta.id}</a></td>
+                <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
                 <td>${etiqueta.referencia_autor}</td>
                 <td>${etiqueta.referencia_tarefa}</td>
                 <td>${etiqueta.titulo}</td>

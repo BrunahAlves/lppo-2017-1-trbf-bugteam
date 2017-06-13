@@ -24,7 +24,7 @@ import javax.transaction.UserTransaction;
  *
  * @author Adriano
  */
-@WebServlet(name = "TarefaServlet", urlPatterns = {"/criarTarefa.html", "/listarTarefa.html"})
+@WebServlet(name = "TarefaServlet", urlPatterns = {"/criarTarefa.html", "/listarTarefa.html", "/excluirTarefa.html", "/editarTarefa.html"})
 public class TarefaServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "trbflppo-2017-1PU")
@@ -36,7 +36,12 @@ public class TarefaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getServletPath().contains("/listarTarefa.html")) {
+        if (request.getServletPath().contains("/editarTarefa.html")) {
+            doEditarGet(request, response);
+        } else if (request.getServletPath().contains("/excluirTarefa.html")) {
+            doExcluirGet(request, response);
+            response.sendRedirect("listarTarefa.html");
+        } else if (request.getServletPath().contains("/listarTarefa.html")) {
             doListarGet(request, response);
         } else if (request.getServletPath().contains("/criarTarefa.html")) {
             doCriarGet(request, response);
@@ -47,7 +52,9 @@ public class TarefaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        if (request.getServletPath().contains("/editarTarefa.html")) {
+            doEditarPost(request, response);
+        }
         if (request.getServletPath().contains("/criarTarefa.html")) {
             try {
                 doCriarPost(request, response);
@@ -84,6 +91,53 @@ public class TarefaServlet extends HttpServlet {
             response.sendRedirect("listarTarefa.html");
         } catch (Exception ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void doEditarGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            TarefaJpaController dao = new TarefaJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+            Tarefa tarefa = dao.findTarefa(id);
+            request.setAttribute("tarefa", tarefa);
+            request.getRequestDispatcher("WEB-INF/editar-tarefa.jsp").forward(request, response);
+        } catch (Exception e) {
+            response.sendRedirect("listarTarefa.html");
+
+        }
+
+    }
+
+    private void doEditarPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = formato.parse(request.getParameter("dt-concluir"));
+            Date dtConclusao = formato.parse(request.getParameter("dt-concluida"));
+            TarefaJpaController dao = new TarefaJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+            Tarefa tarefa = dao.findTarefa(id);
+            tarefa.setTitulo(request.getParameter("titulo"));
+            tarefa.setDescricao(request.getParameter("descricao"));
+            tarefa.setData_concluir(data);
+            tarefa.setData_conclusao(dtConclusao);
+            dao.edit(tarefa);
+
+            response.sendRedirect("listarTarefa.html");
+
+        } catch (Exception e) {
+            response.sendRedirect("listarTarefa.html");
+
+        }
+    }
+
+    private void doExcluirGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            TarefaJpaController dao = new TarefaJpaController(ut, emf);
+            Long id = Long.parseLong(request.getParameter("id"));
+
+            dao.destroy(id);
+        } catch (Exception ex) {
+            response.sendRedirect("listarTarefa.html");
         }
     }
 }

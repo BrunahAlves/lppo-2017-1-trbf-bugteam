@@ -20,17 +20,16 @@
                 <th>Descrição da tarefa</th><br>
                 <th>Data Prevista para conclusão</th><br>
                 <th>Ações</th>
-        </tr>
+            </tr>
         <c:forEach var="tarefa" items="${tarefas}">
             <tr>
                 <td><a href="editarTarefa.html?id=${tarefa.id}">${tarefa.id}</a></td>
                 <td>${tarefa.titulo}</td>
                 <td>${tarefa.descricao}</td>
                 <td>${tarefa.data_concluir}</td>
-                <td><a href="excluirTarefa.html?id=${etiqueta.id}">&#128465;</a></td>
-        </tr>
-    </c:forEach>
-</table>
-
-    </body>
+                <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</body>
 </html>

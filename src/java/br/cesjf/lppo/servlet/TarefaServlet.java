@@ -65,25 +65,26 @@ public class TarefaServlet extends HttpServlet {
     }
 
     private void doListarGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Tarefa> tarefas = new ArrayList<>();
+     List<Tarefa> tarefas = new ArrayList<>();
         TarefaJpaController dao = new TarefaJpaController(ut, emf);
         tarefas = dao.findTarefaEntities();
-
+        
         request.setAttribute("tarefas", tarefas);
         request.getRequestDispatcher("WEB-INF/listar-tarefas.jsp").forward(request, response);
     }
+
 
     private void doCriarGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/cria-tarefa.jsp").forward(request, response);
     }
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) throws ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = formato.parse(request.getParameter("dt-concluir"));
+        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        //Date data = formato.parse(request.getParameter("dt-concluir"));
         Tarefa tarefa1 = new Tarefa();
         tarefa1.setTitulo(request.getParameter("titulo"));
         tarefa1.setDescricao(request.getParameter("descricao"));
-        tarefa1.setData_concluir(data);
+        //tarefa1.setData_concluir(data);
 
         TarefaJpaController dao = new TarefaJpaController(ut, emf);
         try {

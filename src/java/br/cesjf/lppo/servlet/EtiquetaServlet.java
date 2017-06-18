@@ -27,7 +27,7 @@ import javax.transaction.UserTransaction;
  *
  * @author Bruna Alves
  */
-@WebServlet(name = "EtiquetaServlet", urlPatterns = {"/criarEtiqueta.html", "/listarEtiqueta.html", "/excluirEtiqueta.html", "/editarEtiqueta.html"})
+@WebServlet(name = "EtiquetaServlet", urlPatterns = {"/criarEtiqueta.html", "/listarEtiqueta.html", "/excluirEtiqueta.html", "/editarEtiqueta.html", "/listarEtiquetaPorAutor.html"})
 public class EtiquetaServlet extends HttpServlet {
 
     @PersistenceUnit(unitName = "trbflppo-2017-1PU")
@@ -48,6 +48,8 @@ public class EtiquetaServlet extends HttpServlet {
             doListarGet(request, response);
         } else if (request.getServletPath().contains("/criarEtiqueta.html")) {
             doCriarGet(request, response);
+        }else if (request.getServletPath().contains("/listarEtiquetaPorAutor.html")) {
+            doListarEtiquetaPorAutorGet(request, response);
         }
 
     }
@@ -77,7 +79,8 @@ public class EtiquetaServlet extends HttpServlet {
     }
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) {
-            //Criado para receber a classe USUARIO, pegando o atributo ID
+    
+        //Criado para receber a classe USUARIO, pegando o atributo ID
             Long usuario_id = Long.parseLong(request.getParameter("usuario_id"));
             UsuarioJpaController dao_usuario = new UsuarioJpaController(ut, emf);
             Usuario usuario = new Usuario();
@@ -163,5 +166,19 @@ public class EtiquetaServlet extends HttpServlet {
         } catch (Exception ex) {
             response.sendRedirect("listarEtiqueta.html");
         }
+    }
+
+    private void doListarEtiquetaPorAutorGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        List<Etiqueta> etiquetas = new ArrayList<>();
+        EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
+        etiquetas = dao.findEtiquetaEntities();
+
+         List<Usuario> usuarios = new ArrayList<>();
+         UsuarioJpaController dao1 = new UsuarioJpaController(ut, emf);
+         usuarios = dao1.findUsuarioEntities();
+         
+        request.setAttribute("etiquetas", etiquetas);
+        request.getRequestDispatcher("WEB-INF/listar-etiquetasporautor.jsp").forward(request, response);
     }
 }

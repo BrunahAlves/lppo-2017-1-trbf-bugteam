@@ -12,6 +12,7 @@
         <title>Editar Tarefa</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Editar Tarefa</h1>
         <form method="post">
             <label>Id: <input name="id" type="hidden" value="${tarefa.id}" />${tarefa.id}</label>

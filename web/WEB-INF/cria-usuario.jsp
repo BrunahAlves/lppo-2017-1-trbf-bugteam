@@ -12,6 +12,7 @@
         <title>Novo usuário</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Novo usuário</h1>
         <form method="post">
             <label>Nome Completo: <input name="nomecompleto" /></label>

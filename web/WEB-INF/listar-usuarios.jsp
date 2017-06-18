@@ -13,6 +13,7 @@
         <title>Lista de usuários</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Lista de usuários</h1>
          <table>
             <tr>

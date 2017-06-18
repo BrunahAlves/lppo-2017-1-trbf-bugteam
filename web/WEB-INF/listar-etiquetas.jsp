@@ -13,6 +13,7 @@
         <title>Listar etiquetas</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Listar etiquetas!</h1>
         <table>
             <tr>

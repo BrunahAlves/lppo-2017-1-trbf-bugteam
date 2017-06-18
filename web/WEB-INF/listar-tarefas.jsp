@@ -12,6 +12,7 @@
         <title>Listar Tarefas</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Listar Tarefas</h1>
         <table>
             <tr>

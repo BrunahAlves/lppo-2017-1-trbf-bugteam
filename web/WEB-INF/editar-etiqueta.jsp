@@ -12,6 +12,7 @@
         <title>Editar etiqueta</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Editar etiqueta!</h1>
         <form method="post">
             <label>Id: <input name="id" type="hidden" value="${etiqueta.id}" />${etiqueta.id}</label>

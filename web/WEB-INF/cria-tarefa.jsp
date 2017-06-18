@@ -12,6 +12,7 @@
         <title>Nova Tarefa</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Nova Tarefa</h1>
         <form method="post">
             <label>Titulo: <input type="text" name="titulo" /></label>

@@ -13,6 +13,7 @@
         <title>Listar etiquetas por autor</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Listar etiquetas por autor</h1>
         <table>
             <tr>

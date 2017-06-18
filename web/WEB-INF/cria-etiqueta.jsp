@@ -12,6 +12,7 @@
         <title>Cria Etiqueta</title>
     </head>
     <body>
+        <%@include file="jspf/menu.jspf" %>
         <h1>Cria etiqueta!</h1>
         <form method="post">
             <label>Referencia para um autor: <input name="usuario_id" /></label>

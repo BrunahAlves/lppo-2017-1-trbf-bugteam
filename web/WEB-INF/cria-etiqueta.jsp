@@ -14,8 +14,8 @@
     <body>
         <h1>Cria etiqueta!</h1>
         <form method="post">
-            <label>Referencia para um autor: <input name="Usuario" /></label>
-            <label>Referência para uma tarefa: <input name="Tarefa" /></label>
+            <label>Referencia para um autor: <input name="usuario_id" /></label>
+            <label>Referência para uma tarefa: <input name="tarefa_id" /></label>
             <label>Titulo: <input name="titulo" /></label>
             <input type="submit" />
     </body>

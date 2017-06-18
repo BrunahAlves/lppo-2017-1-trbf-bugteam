@@ -2,9 +2,13 @@ package br.cesjf.lppo.servlet;
 
 import br.cesjf.lppo.Etiqueta;
 import br.cesjf.lppo.Tarefa;
+import br.cesjf.lppo.Usuario;
 import br.cesjf.lppo.dao.EtiquetaJpaController;
+import br.cesjf.lppo.dao.TarefaJpaController;
+import br.cesjf.lppo.dao.UsuarioJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -73,9 +77,23 @@ public class EtiquetaServlet extends HttpServlet {
     }
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) {
+            //Criado para receber a classe USUARIO, pegando o atributo ID
+            Long usuario_id = Long.parseLong(request.getParameter("usuario_id"));
+            UsuarioJpaController dao_usuario = new UsuarioJpaController(ut, emf);
+            Usuario usuario = new Usuario();
+            usuario = dao_usuario.findUsuario(usuario_id);
+            //fim
+            
+            //Criado para receber a classe TAREFA, pegando o atributo ID
+            Long tarefa_id = Long.parseLong(request.getParameter("tarefa_id"));
+            TarefaJpaController dao_tarefa = new TarefaJpaController(ut, emf);
+            Tarefa tarefa = new Tarefa();
+            tarefa = dao_tarefa.findTarefa(tarefa_id);
+            //fim    
+        
         Etiqueta etiqueta1 = new Etiqueta();
-        etiqueta1.setUsuario((request.getParameter("usuario_id")));
-        etiqueta1.setTarefa((request.getParameter("tarefa_id")));
+        etiqueta1.setUsuario(usuario);
+        etiqueta1.setTarefa(tarefa);
         etiqueta1.setTitulo(request.getParameter("titulo"));
 
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
@@ -103,14 +121,31 @@ public class EtiquetaServlet extends HttpServlet {
 
     private void doEditarPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+        //    String teste = "teste";
+                  
+            //Criado para receber a classe USUARIO, pegando o atributo ID
+            Long usuario_id = Long.parseLong(request.getParameter("usuario_id"));
+            UsuarioJpaController dao_usuario = new UsuarioJpaController(ut, emf);
+            Usuario usuario = new Usuario();
+            usuario = dao_usuario.findUsuario(usuario_id);
+            //fim
+            
+            //Criado para receber a classe TAREFA, pegando o atributo ID
+            Long tarefa_id = Long.parseLong(request.getParameter("tarefa_id"));
+            TarefaJpaController dao_tarefa = new TarefaJpaController(ut, emf);
+            Tarefa tarefa = new Tarefa();
+            tarefa = dao_tarefa.findTarefa(tarefa_id);
+            //fim    
+            
             EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
             Long id = Long.parseLong(request.getParameter("id"));
             Etiqueta etiqueta = dao.findEtiqueta(id);
-            etiqueta.setUsuario(request.getParameter("usuario_id"));
-            etiqueta.setTarefa((request.getParameter("tarefa_id")));
+
+            etiqueta.setUsuario(usuario);
+            etiqueta.setTarefa(tarefa);
             etiqueta.setTitulo(request.getParameter("titulo"));
             dao.edit(etiqueta);
-
+            
             response.sendRedirect("listarEtiqueta.html");
 
         } catch (Exception e) {

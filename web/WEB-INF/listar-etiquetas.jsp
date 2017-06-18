@@ -25,8 +25,8 @@
         <c:forEach var="etiqueta" items="${etiquetas}">
             <tr>
                 <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
-                <td>${etiqueta.referencia_autor}</td>
-                <td>${etiqueta.referencia_tarefa}</td>
+                <td>${etiqueta.usuario_id}</td>
+                <td>${etiqueta.tarefa_id}</td>
                 <td>${etiqueta.titulo}</td>
                 <td><a href="excluirEtiqueta.html?id=${etiqueta.id}">&#128465;</a></td>
         </tr>

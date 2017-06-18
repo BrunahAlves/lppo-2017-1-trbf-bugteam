@@ -15,8 +15,8 @@
         <h1>Editar etiqueta!</h1>
         <form method="post">
             <label>Id: <input name="id" type="hidden" value="${etiqueta.id}" />${etiqueta.id}</label>
-            <label>Referência para um autor: <input name="referencia_autor" value="${etiqueta.referencia_autor}"/></label>
-            <label>Referência para uma tarefa: <input name="referencia_tarefa" value ="${etiqueta.referencia_tarefa}"/></label>
+            <label>Referência para um autor: <input name="usuario_id" value="${etiqueta.usuario_id}"/></label>
+            <label>Referência para uma tarefa: <input name="tarefa_id" value ="${etiqueta.tarefa_id}"/></label>
             <label>Titulo: <input name="titulo" value="${etiqueta.titulo}"/></label>
             <input type="submit" />
         </form>

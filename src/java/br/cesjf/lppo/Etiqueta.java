@@ -1,10 +1,13 @@
 package br.cesjf.lppo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,8 +18,15 @@ public class Etiqueta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String referencia_autor;
-    private String referencia_tarefa;
+    
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
+    
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "tarefa_id", referencedColumnName = "id")
+    private Tarefa tarefa;
+    
     private String titulo;
 
     public Long getId() {
@@ -27,20 +37,20 @@ public class Etiqueta implements Serializable {
         this.id = id;
     }
 
-    public String getReferencia_autor() {
-        return referencia_autor;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setReferencia_autor(String referencia_autor) {
-        this.referencia_autor = referencia_autor;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public String getReferencia_tarefa() {
-        return referencia_tarefa;
+    public Tarefa getTarefa() {
+        return tarefa;
     }
 
-    public void setReferencia_tarefa(String referencia_tarefa) {
-        this.referencia_tarefa = referencia_tarefa;
+    public void setTarefa(Tarefa tarefa) {
+        this.tarefa = tarefa;
     }
 
     public String getTitulo() {
@@ -50,6 +60,7 @@ public class Etiqueta implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
     
     
 }

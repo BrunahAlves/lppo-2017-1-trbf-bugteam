@@ -1,6 +1,7 @@
 package br.cesjf.lppo.servlet;
 
 import br.cesjf.lppo.Etiqueta;
+import br.cesjf.lppo.Tarefa;
 import br.cesjf.lppo.dao.EtiquetaJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,8 +74,8 @@ public class EtiquetaServlet extends HttpServlet {
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) {
         Etiqueta etiqueta1 = new Etiqueta();
-        etiqueta1.setReferencia_autor(request.getParameter("referencia_autor"));
-        etiqueta1.setReferencia_tarefa(request.getParameter("referencia_tarefa"));
+        etiqueta1.setUsuario((request.getParameter("usuario_id")));
+        etiqueta1.setTarefa((request.getParameter("tarefa_id")));
         etiqueta1.setTitulo(request.getParameter("titulo"));
 
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
@@ -105,8 +106,8 @@ public class EtiquetaServlet extends HttpServlet {
             EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
             Long id = Long.parseLong(request.getParameter("id"));
             Etiqueta etiqueta = dao.findEtiqueta(id);
-            etiqueta.setReferencia_autor(request.getParameter("referencia_autor"));
-            etiqueta.setReferencia_tarefa(request.getParameter("referencia_tarefa"));
+            etiqueta.setUsuario(request.getParameter("usuario_id"));
+            etiqueta.setTarefa((request.getParameter("tarefa_id")));
             etiqueta.setTitulo(request.getParameter("titulo"));
             dao.edit(etiqueta);
 

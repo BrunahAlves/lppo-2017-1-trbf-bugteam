@@ -14,24 +14,35 @@
     </head>
     <body>
         <%@include file="jspf/menu.jspf" %>
-        <h1>Listar etiquetas!</h1>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Referência para um autor</th><br>
-                <th>Referência para uma tarefa</th><br>
-                <th>Título</th><br>
-                <th>Ações</th>
-        </tr>
-        <c:forEach var="etiqueta" items="${etiquetas}">
-            <tr>
-                <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
-                <td>${etiqueta.usuario.id}</td>
-                <td>${etiqueta.tarefa.id}</td>
-                <td>${etiqueta.titulo}</td>
-                <td><a href="excluirEtiqueta.html?id=${etiqueta.id}">&#128465;</a></td>
-        </tr>
-    </c:forEach>
-</table>
-</body>
-</html>
+        <div class="panel panel-primary" style="margin:20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center;">Listar etiquetas!</h3>
+            </div> 
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Referência para um autor</th><br>
+                        <th>Referência para uma tarefa</th><br>
+                        <th>Título</th><br>
+                        <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="etiqueta" items="${etiquetas}">
+                                <tr>
+                                    <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
+                                    <td>${etiqueta.usuario.id}</td>
+                                    <td>${etiqueta.tarefa.id}</td>
+                                    <td>${etiqueta.titulo}</td>
+                                    <td><a href="excluirEtiqueta.html?id=${etiqueta.id}">&#128465;</a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+        </div>

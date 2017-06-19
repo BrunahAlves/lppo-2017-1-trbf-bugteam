@@ -13,15 +13,28 @@
     </head>
     <body>
         <%@include file="jspf/menu.jspf" %>
-        <h1>Editar Tarefa</h1>
-        <form method="post">
-            <label>Id: <input name="id" type="hidden" value="${tarefa.id}" />${tarefa.id}</label>
-            <label>Titulo: <input type="text" name="titulo" /></label>
-            <label>Descrição: <input type="text" name="descricao" /></label>
-            <label>Data prevista para conclusão: <input type="datetime" name="dt_concluir" /></label>
-            <label>Data da conclusão: <input type="datetime" name="dt_concluida" /></label>
-            <input type="submit" />
-        </form>
-
-    </body>
-</html>
+        <div class="panel panel-primary" style="margin:20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center;">Editar etiqueta!</h3>
+            </div> 
+            <div class="panel-body">
+                <center>
+                    <form method="post" style="width: 70%; text-align: left">
+                        <label>Id:</label>
+                        <input class="form-control" name="id" type="hidden" value="${tarefa.id}" readonly="readonly" />
+                        <label>Titulo:</label>
+                        <input class="form-control" type="text" name="titulo" />
+                        <label>Descrição:</label>
+                        <input class="form-control" type="text" name="descricao" />
+                        <label>Data prevista para conclusão:</label>
+                        <input class="form-control" type="datetime" name="dt_concluir" />
+                        <label>Data da conclusão:</label>
+                        <input class="form-control" type="datetime" name="dt_concluida" />
+                        <br>
+                        <div class="form-group col-md-3 col-sm-3 pull-right" >
+                            <input type="submit" class="btn btn-primary" value="Cadastrar"/>
+                        </div>
+                    </form>
+                </center>
+            </div>
+        </div>

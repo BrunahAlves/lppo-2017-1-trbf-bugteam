@@ -13,24 +13,34 @@
     </head>
     <body>
         <%@include file="jspf/menu.jspf" %>
-        <h1>Listar Tarefas</h1>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Titulo da tarefa</th><br>
-                <th>Descrição da tarefa</th><br>
-                <th>Data Prevista para conclusão</th><br>
-                <th>Ações</th>
-            </tr>
-        <c:forEach var="tarefa" items="${tarefas}">
-            <tr>
-                <td><a href="editarTarefa.html?id=${tarefa.id}">${tarefa.id}</a></td>
-                <td>${tarefa.titulo}</td>
-                <td>${tarefa.descricao}</td>
-                <td>${tarefa.data_concluir}</td>
-                <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
-            </tr>
-        </c:forEach>
-    </table>
-</body>
-</html>
+        <div class="panel panel-primary" style="margin:20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center;">Listar tarefas</h3>
+            </div> 
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titulo da tarefa</th><br>
+                                <th>Descrição da tarefa</th><br>
+                                <th>Data Prevista para conclusão</th><br>
+                                <th>Ações</th>
+                            </tr>   
+                        </thead>
+                        <tbody>
+                        <c:forEach var="tarefa" items="${tarefas}">
+                            <tr>
+                                <td><a href="editarTarefa.html?id=${tarefa.id}">${tarefa.id}</a></td>
+                                <td>${tarefa.titulo}</td>
+                                <td>${tarefa.descricao}</td>
+                                <td>${tarefa.data_concluir}</td>
+                                <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+                <br>
+            </div>
+        </div>

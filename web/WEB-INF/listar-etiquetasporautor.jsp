@@ -14,19 +14,30 @@
     </head>
     <body>
         <%@include file="jspf/menu.jspf" %>
-        <h1>Listar etiquetas por autor</h1>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Id Autor</th><br>
-                <th>Nome Autor</th><br>
-        </tr>
-        <c:forEach var="etiqueta" items="${etiquetas}">
-            <tr>
-                <td>${etiqueta.id}</a></td>
-                <td>${etiqueta.usuario.id}</td>
-                <td>${etiqueta.usuario.nomecompleto}</td>
-        </tr>
-        </c:forEach>
-    </body>
-</html>
+        <div class="panel panel-primary" style="margin:20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align: center;">Listar etiquetas por autor</h3>
+            </div> 
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Id Autor</th><br>
+                        <th>Nome Autor</th><br>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="etiqueta" items="${etiquetas}">
+                            <tr>
+                                <td>${etiqueta.id}</a></td>
+                                <td>${etiqueta.usuario.id}</td>
+                                <td>${etiqueta.usuario.nomecompleto}</td>
+                            </tr>
+                        </c:forEach>          </tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+        </div>

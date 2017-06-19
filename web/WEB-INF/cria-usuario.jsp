@@ -33,4 +33,5 @@
                     </form>
                 </center>
             </div>
-        </div>    
+        </div>   
+        <%@include file="jspf/rodape.jspf" %>

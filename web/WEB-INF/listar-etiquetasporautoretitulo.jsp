@@ -25,21 +25,22 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Id Autor</th><br>
-                                <th>Nome Autor</th><br>
-                                <th>Titulo tarefa</th><br>
-                            </tr>
+                        <th>Nome Autor</th><br>
+                        <th>Titulo tarefa</th><br>
+                        </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="etiqueta" items="${etiquetas}">
-                            <tr>
-                                <td>${etiqueta.id}</a></td>
-                                <td>${etiqueta.usuario.id}</td>
-                                <td>${etiqueta.usuario.nomecompleto}</td>
-                                <td>${etiqueta.tarefa.titulo}</td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach var="etiqueta" items="${etiquetas}">
+                                <tr>
+                                    <td>${etiqueta.id}</a></td>
+                                    <td>${etiqueta.usuario.id}</td>
+                                    <td>${etiqueta.usuario.nomecompleto}</td>
+                                    <td>${etiqueta.tarefa.titulo}</td>
+                                </tr>
+                            </c:forEach>
                     </table>
                 </div>
                 <br>
             </div>
         </div>
+        <%@include file="jspf/rodape.jspf" %>

@@ -30,16 +30,17 @@
                             </tr>   
                         </thead>
                         <tbody>
-                        <c:forEach var="usuario" items="${usuarios}">
-                            <tr>
-                                <td><a href="editar.html?id=${usuario.id}">${usuario.id}</a></td>
-                                <td>${usuario.nomecompleto}</td>
-                                <td>${usuario.email}</td>
-                                <td><a href="excluir.html?id=${usuario.id}">&#128465;</a></td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach var="usuario" items="${usuarios}">
+                                <tr>
+                                    <td><a href="editar.html?id=${usuario.id}">${usuario.id}</a></td>
+                                    <td>${usuario.nomecompleto}</td>
+                                    <td>${usuario.email}</td>
+                                    <td><a href="excluir.html?id=${usuario.id}">&#128465;</a></td>
+                                </tr>
+                            </c:forEach>
                     </table>
                 </div>
                 <br>
             </div>
         </div>
+        <%@include file="jspf/rodape.jspf" %>

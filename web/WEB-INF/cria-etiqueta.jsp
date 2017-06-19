@@ -35,3 +35,4 @@
                 </center>
             </div>
         </div>
+        <%@include file="jspf/rodape.jspf" %>

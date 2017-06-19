@@ -24,10 +24,10 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Titulo da tarefa</th><br>
-                                <th>Descrição da tarefa</th><br>
-                                <th>Data Prevista para conclusão</th><br>
-                                <th>Ações</th>
-                            </tr>   
+                        <th>Descrição da tarefa</th><br>
+                        <th>Data Prevista para conclusão</th><br>
+                        <th>Ações</th>
+                        </tr>   
                         </thead>
                         <tbody>
                         <c:forEach var="tarefa" items="${tarefas}">
@@ -44,3 +44,4 @@
                 <br>
             </div>
         </div>
+        <%@include file="jspf/rodape.jspf" %>

@@ -46,3 +46,4 @@
                 <br>
             </div>
         </div>
+        <%@include file="jspf/rodape.jspf" %>

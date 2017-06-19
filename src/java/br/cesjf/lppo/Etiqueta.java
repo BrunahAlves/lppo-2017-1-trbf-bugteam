@@ -20,12 +20,12 @@ public class Etiqueta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+  //  @ManyToOne(cascade=CascadeType.PERSIST)
+  //  @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
     
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "tarefa_id", referencedColumnName = "id")
+  //  @ManyToOne(cascade=CascadeType.PERSIST)
+  //  @JoinColumn(name = "tarefa_id", referencedColumnName = "id")
     private Tarefa tarefa;
     
     private String titulo;

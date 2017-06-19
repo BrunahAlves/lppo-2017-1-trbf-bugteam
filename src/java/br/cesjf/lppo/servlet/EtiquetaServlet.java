@@ -81,24 +81,11 @@ public class EtiquetaServlet extends HttpServlet {
     }
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) {
-    
-        //Criado para receber a classe USUARIO, pegando o atributo ID
-            Long usuario_id = Long.parseLong(request.getParameter("usuario_id"));
-            UsuarioJpaController dao_usuario = new UsuarioJpaController(ut, emf);
-            Usuario usuario = new Usuario();
-            usuario = dao_usuario.findUsuario(usuario_id);
-            //fim
-            
-            //Criado para receber a classe TAREFA, pegando o atributo ID
-            Long tarefa_id = Long.parseLong(request.getParameter("tarefa_id"));
-            TarefaJpaController dao_tarefa = new TarefaJpaController(ut, emf);
-            Tarefa tarefa = new Tarefa();
-            tarefa = dao_tarefa.findTarefa(tarefa_id);
-            //fim    
-        
         Etiqueta etiqueta1 = new Etiqueta();
-        etiqueta1.setUsuario(usuario);
-        etiqueta1.setTarefa(tarefa);
+        UsuarioJpaController u = new UsuarioJpaController(ut, emf);
+        TarefaJpaController t = new TarefaJpaController(ut, emf);
+        etiqueta1.setUsuario((u.findUsuario(Long.parseLong(request.getParameter("usuario_id")))));
+        etiqueta1.setTarefa((t.findTarefa(Long.parseLong(request.getParameter("tarefa_id")))));
         etiqueta1.setTitulo(request.getParameter("titulo"));
 
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
@@ -108,6 +95,7 @@ public class EtiquetaServlet extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     private void doEditarGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -126,37 +114,34 @@ public class EtiquetaServlet extends HttpServlet {
 
     private void doEditarPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-        //    String teste = "teste";
-                  
-            //Criado para receber a classe USUARIO, pegando o atributo ID
-            Long usuario_id = Long.parseLong(request.getParameter("usuario_id"));
-            UsuarioJpaController dao_usuario = new UsuarioJpaController(ut, emf);
-            Usuario usuario = new Usuario();
-            usuario = dao_usuario.findUsuario(usuario_id);
-            //fim
-            
-            //Criado para receber a classe TAREFA, pegando o atributo ID
-            Long tarefa_id = Long.parseLong(request.getParameter("tarefa_id"));
-            TarefaJpaController dao_tarefa = new TarefaJpaController(ut, emf);
-            Tarefa tarefa = new Tarefa();
-            tarefa = dao_tarefa.findTarefa(tarefa_id);
-            //fim    
-            
+
+            /**
+             * Etiqueta etiqueta1 = new Etiqueta(); UsuarioJpaController u = new
+             * UsuarioJpaController(ut, emf); TarefaJpaController t = new
+             * TarefaJpaController(ut, emf);
+             * etiqueta1.setUsuario((u.findUsuario(Long.parseLong(request.getParameter("usuario_id")))));
+             * etiqueta1.setTarefa((t.findTarefa(Long.parseLong(request.getParameter("tarefa_id")))));
+             * etiqueta1.setTitulo(request.getParameter("titulo"));
+             *
+             */
             EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
             Long id = Long.parseLong(request.getParameter("id"));
             Etiqueta etiqueta = dao.findEtiqueta(id);
+            UsuarioJpaController u = new UsuarioJpaController(ut, emf);
+            TarefaJpaController t = new TarefaJpaController(ut, emf);
 
-            etiqueta.setUsuario(usuario);
-            etiqueta.setTarefa(tarefa);
+            etiqueta.setUsuario((u.findUsuario(Long.parseLong(request.getParameter("usuario_id")))));
+            etiqueta.setTarefa((t.findTarefa(Long.parseLong(request.getParameter("tarefa_id")))));
             etiqueta.setTitulo(request.getParameter("titulo"));
+
             dao.edit(etiqueta);
-            
+
             response.sendRedirect("listarEtiqueta.html");
 
         } catch (Exception e) {
             response.sendRedirect("listarEtiqueta.html");
-
         }
+
     }
 
     private void doExcluirGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -171,7 +156,7 @@ public class EtiquetaServlet extends HttpServlet {
     }
 
     private void doListarEtiquetaPorAutorGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         List<Etiqueta> etiquetas = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();
@@ -179,9 +164,9 @@ public class EtiquetaServlet extends HttpServlet {
         request.setAttribute("etiquetas", etiquetas);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautor.jsp").forward(request, response);
     }
-    
-        private void doListarEtiquetaPorAutoreTituloGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
+    private void doListarEtiquetaPorAutoreTituloGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         List<Etiqueta> etiquetas = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();

@@ -23,19 +23,26 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Id Autor</th><br>
-                        <th>Nome Autor</th><br>
+
+                                <th>Nome do autor</th>
+                        <select name="blabla">  
+                            <c:forEach var="etiqueta" items="${etiquetas}">  
+                                <option value="${etiqueta.usuario.nomecompleto}">${etiqueta.usuario.nomecompleto}</option>  
+                            </c:forEach>  
+                        </select><br>
+                        <th>Título da etiqueta</th><br>
                         </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="etiqueta" items="${etiquetas}">
                                 <tr>
-                                    <td>${etiqueta.id}</a></td>
-                                    <td>${etiqueta.usuario.id}</td>
                                     <td>${etiqueta.usuario.nomecompleto}</td>
+                                    <td>${etiqueta.titulo}</td>
+
+
                                 </tr>
-                            </c:forEach>          </tbody>
+                            </c:forEach>          
+                        </tbody>
                     </table>
                 </div>
                 <br>

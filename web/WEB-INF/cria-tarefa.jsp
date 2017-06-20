@@ -25,7 +25,7 @@
                         <label>Descrição:</label>
                         <input class="form-control" type="text" name="descricao"/>
                         <label>Data prevista para conclusão:</label>
-                        <input class="form-control" type="text" name="dt_concluir"/>
+                        <input class="form-control" type="text" name="dt-concluir"/>
                         <br>
                         <div class="form-group col-md-3 col-sm-3 pull-right" >
                             <input type="submit" class="btn btn-primary" value="Cadastrar"/>

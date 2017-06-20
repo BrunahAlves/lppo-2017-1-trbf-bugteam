@@ -79,12 +79,12 @@ public class TarefaServlet extends HttpServlet {
     }
 
     private void doCriarPost(HttpServletRequest request, HttpServletResponse response) throws ParseException {
-        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        //Date data = formato.parse(request.getParameter("dt-concluir"));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = formato.parse(request.getParameter("dt-concluir"));
         Tarefa tarefa1 = new Tarefa();
         tarefa1.setTitulo(request.getParameter("titulo"));
         tarefa1.setDescricao(request.getParameter("descricao"));
-        //tarefa1.setData_concluir(data);
+        tarefa1.setData_concluir(data);
 
         TarefaJpaController dao = new TarefaJpaController(ut, emf);
         try {

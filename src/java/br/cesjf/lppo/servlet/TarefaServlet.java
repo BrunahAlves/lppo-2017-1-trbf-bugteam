@@ -100,11 +100,10 @@ public class TarefaServlet extends HttpServlet {
             TarefaJpaController dao = new TarefaJpaController(ut, emf);
             Long id = Long.parseLong(request.getParameter("id"));
             Tarefa tarefa = dao.findTarefa(id);
-            request.setAttribute("tarefa", tarefa);
+            request.setAttribute("tarefas", tarefa);
             request.getRequestDispatcher("WEB-INF/editar-tarefa.jsp").forward(request, response);
         } catch (Exception e) {
             response.sendRedirect("listarTarefa.html");
-
         }
 
     }

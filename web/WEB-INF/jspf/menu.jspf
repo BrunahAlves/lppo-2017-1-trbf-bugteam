@@ -48,6 +48,7 @@
                                     <li><a href="listarEtiquetaPorAutoreTitulo.html">Listar Etiquetas por autor e titulo</a></li>
                                 </ul>
                             </li>
+                            <li><a href="kanban.html">Quadro Kanban</a></li>
                         </ul>
                     </div>
                 </div>

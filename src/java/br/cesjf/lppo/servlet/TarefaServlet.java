@@ -46,7 +46,6 @@ public class TarefaServlet extends HttpServlet {
         } else if (request.getServletPath().contains("/criarTarefa.html")) {
             doCriarGet(request, response);
         }
-
     }
 
     @Override
@@ -65,14 +64,13 @@ public class TarefaServlet extends HttpServlet {
     }
 
     private void doListarGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     List<Tarefa> tarefas = new ArrayList<>();
+        List<Tarefa> tarefas = new ArrayList<>();
         TarefaJpaController dao = new TarefaJpaController(ut, emf);
         tarefas = dao.findTarefaEntities();
-        
+
         request.setAttribute("tarefas", tarefas);
         request.getRequestDispatcher("WEB-INF/listar-tarefas.jsp").forward(request, response);
     }
-
 
     private void doCriarGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/cria-tarefa.jsp").forward(request, response);

@@ -3,7 +3,7 @@
     Created on : 12/06/2017, 21:35:28
     Author     : Adriano
 --%>
-
+<%@page errorPage="../ERROS/erro.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

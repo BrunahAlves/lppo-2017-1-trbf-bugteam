@@ -27,7 +27,7 @@
                         <label>Descrição:</label>
                         <input class="form-control" type="text" name="descricao" value="${tarefas.descricao}" />
                         <label>Data prevista para conclusão:</label>
-                        <input class="form-control" type="text" name="dt-concluir" value="${tarefas.data_concluir}" readonly="readonly"/>
+                        <input class="form-control" type="text" name="dt-concluir" value="${tarefas.data_concluir}" />
                         <label>Data da conclusão:</label>
                         <input class="form-control" type="text" name="dt-concluida" value="${tarefas.data_conclusao}"/>
                         <br>

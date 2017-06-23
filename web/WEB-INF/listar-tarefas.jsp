@@ -3,6 +3,7 @@
     Created on : 12/06/2017, 21:35:28
     Author     : Adriano
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page errorPage="../ERROS/erro.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,15 +32,15 @@
                         </tr>   
                         </thead>
                         <tbody>
-                        <c:forEach var="tarefa" items="${tarefas}">
-                            <tr>
-                                <td><a href="editarTarefa.html?id=${tarefa.id}">${tarefa.id}</a></td>
-                                <td>${tarefa.titulo}</td>
-                                <td>${tarefa.descricao}</td>
-                                <td>${tarefa.data_concluir}</td>
-                                <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
-                            </tr>
-                        </c:forEach>
+                            <c:forEach var="tarefa" items="${tarefas}">
+                                <tr>
+                                    <td><a href="editarTarefa.html?id=${tarefa.id}">${tarefa.id}</a></td>
+                                    <td>${tarefa.titulo}</td>
+                                    <td>${tarefa.descricao}</td>
+                                    <td><fmt:formatDate value="${tarefa.data_concluir}" type="date" dateStyle="default" /></td>
+                                    <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
+                                </tr>
+                            </c:forEach>
                     </table>
                 </div>
                 <br>

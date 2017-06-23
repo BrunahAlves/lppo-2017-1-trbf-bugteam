@@ -4,6 +4,7 @@
     Author     : Adriano
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page errorPage="../ERROS/erro.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,9 +29,9 @@
                         <label>Descrição:</label>
                         <input class="form-control" type="text" name="descricao" value="${tarefas.descricao}" />
                         <label>Data prevista para conclusão:</label>
-                        <input class="form-control" type="text" name="dt-concluir" value="${tarefas.data_concluir}" />
+                        <input class="form-control" type="text" name="dt-concluir" value="<fmt:formatDate value="${tarefas.data_concluir}" type="date" dateStyle="default" />" />
                         <label>Data da conclusão:</label>
-                        <input class="form-control" type="text" name="dt-concluida" value="${tarefas.data_conclusao}"/>
+                        <input class="form-control" type="text" name="dt-concluida" value="<fmt:formatDate value="${tarefas.data_conclusao}" type="date" dateStyle="default" />"/>
                         <br>
                         <div class="form-group col-md-3 col-sm-3 pull-right" >
                             <input type="submit" class="btn btn-primary" value="Cadastrar"/>

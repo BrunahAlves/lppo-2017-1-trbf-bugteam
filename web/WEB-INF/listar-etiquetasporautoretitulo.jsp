@@ -23,9 +23,9 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <form method="post">
-                        <select name="usuario">  
+                        <select name="titulo">  
                             <c:forEach var="etiqueta" items="${etiquetas}">  
-                                <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
+                                <option value="${etiqueta.titulo}">${etiqueta.titulo}</option>  
                             </c:forEach>  
                         </select>
                         <input type="submit" value="Pesquisar" /><p>
@@ -43,7 +43,7 @@
                                 <tr>
                                     <td>${etiqueta.id}</a></td>
                                     <td>${etiqueta.usuario.nomecompleto}</a></td>
-                                    <td>${etiqueta.tarefa.titulo}</td>
+                                    <td>${etiqueta.titulo}</td>
                                 </tr>
                             </c:forEach>
                     </table>

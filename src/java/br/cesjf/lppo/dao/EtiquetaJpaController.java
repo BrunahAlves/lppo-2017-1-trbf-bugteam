@@ -175,5 +175,21 @@ public class EtiquetaJpaController implements Serializable {
         }
     }
     
+    public List<Etiqueta> getEtiquetaByTitulo(String titulo)  {
+        EntityManager em = getEntityManager();
+       
+        try {
+            
+            TypedQuery<Etiqueta> q = em.createQuery("SELECT e FROM Etiqueta e WHERE e.titulo = :String ", Etiqueta.class);
+            q.setParameter("String", titulo);
+            System.out.println(q.getResultList());
+            
+            return q.getResultList();
+        } 
+        finally {
+            em.close();
+        }
+    }
+    
     
 }

@@ -170,8 +170,7 @@ public class EtiquetaServlet extends HttpServlet {
         
         List<Etiqueta> etiquetas = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
-        etiquetas = dao.findEtiquetaEntities();
-
+    //    etiquetas = dao.; JPQL - SELECT
         request.setAttribute("etiquetas", etiquetas);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautoretitulo.jsp").forward(request, response);
     }

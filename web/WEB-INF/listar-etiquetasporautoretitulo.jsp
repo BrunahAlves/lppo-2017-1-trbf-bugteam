@@ -23,10 +23,16 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Id Autor</th><br>
-                        <th>Nome Autor</th><br>
+                        <tr>
+                        <form method="get">
+                        <select name="quadro">  
+                            <c:forEach var="etiqueta" items="${etiquetas}">  
+                                <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
+                            </c:forEach>  
+                        </select>
+                        <input type="submit" value="Pesquisar" /><p>
+                         </form><br>
+                        <th>Id</th>
                         <th>Titulo tarefa</th><br>
                         </tr>
                         </thead>
@@ -34,8 +40,6 @@
                             <c:forEach var="etiqueta" items="${etiquetas}">
                                 <tr>
                                     <td>${etiqueta.id}</a></td>
-                                    <td>${etiqueta.usuario.id}</td>
-                                    <td>${etiqueta.usuario.nomecompleto}</td>
                                     <td>${etiqueta.tarefa.titulo}</td>
                                 </tr>
                             </c:forEach>

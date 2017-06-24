@@ -166,7 +166,8 @@ public class EtiquetaServlet extends HttpServlet {
     }
 
     private void doListarEtiquetaPorAutoreTituloGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       // Long id = Long.parseLong(request.getParameter("id"));
+        
         List<Etiqueta> etiquetas = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();

@@ -159,7 +159,7 @@ public class EtiquetaJpaController implements Serializable {
         }
     }
     
-    public List<Etiqueta> getEtiquetaByAutorTitulo(Long id)  {
+    public List<Etiqueta> getEtiquetaByAutor(Long id)  {
         EntityManager em = getEntityManager();
        
         try {

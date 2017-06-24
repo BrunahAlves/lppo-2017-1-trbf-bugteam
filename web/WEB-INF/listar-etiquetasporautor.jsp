@@ -21,16 +21,23 @@
             </div> 
             <div class="panel-body">
                 <div class="table-responsive">
-                   <table class="table table-striped">
+                    <table class="table table-striped">
+                        <form method="post">
+                        <select name="usuario">  
+                            <c:forEach var="etiqueta" items="${etiquetas}">  
+                                <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
+                            </c:forEach>  
+                        </select>
+                        <input type="submit" value="Pesquisar" /><p>
                         <thead>
                             <tr>
                                 <th>Id</th>
-                        <th>Referência para uma tarefa</th><br>
+                                <th>Referência para uma tarefa</th><br>
                         <th>Título</th><br>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="etiqueta" items="${etiquetas}">
+                            <c:forEach var="etiqueta" items="${etiquetas2}">
                                 <tr>
                                     <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
                                     <td><a href="listarTarefa.html?id=${etiqueta.tarefa.id}">${etiqueta.tarefa.titulo}</td>

@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.UserTransaction;
@@ -157,5 +158,22 @@ public class EtiquetaJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<Etiqueta> getEtiquetaByAutorTitulo(Long id)  {
+        EntityManager em = getEntityManager();
+       
+        try {
+            
+            TypedQuery<Etiqueta> q = em.createQuery("SELECT e FROM Etiqueta e WHERE e.usuario.id = :Long", Etiqueta.class);
+            q.setParameter("Long", id);
+            System.out.println(q.getResultList());
+            
+            return q.getResultList();
+        } 
+        finally {
+            em.close();
+        }
+    }
+    
     
 }

@@ -22,24 +22,27 @@
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
-                        <tr>
-                        <form method="get">
-                        <select name="quadro">  
+                        <form method="post">
+                        <select name="usuario">  
                             <c:forEach var="etiqueta" items="${etiquetas}">  
                                 <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
                             </c:forEach>  
                         </select>
                         <input type="submit" value="Pesquisar" /><p>
+                        <thead>
+                        <tr>
+                        
                          </form><br>
                         <th>Id</th>
+                        <th>Nome do autor</th><br>
                         <th>Titulo tarefa</th><br>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="etiqueta" items="${etiquetas}">
+                            <c:forEach var="etiqueta" items="${etiquetas2}">
                                 <tr>
                                     <td>${etiqueta.id}</a></td>
+                                    <td>${etiqueta.usuario.nomecompleto}</a></td>
                                     <td>${etiqueta.tarefa.titulo}</td>
                                 </tr>
                             </c:forEach>

@@ -83,7 +83,6 @@
             </p>
 
             <br />
-            <p>Ir para <a href="../index.jsp">página incial.</a> </p>
             <p>Voltar a <a href="javascript:window.history.go(-1)">página anterior.</a </p>
         </div>
     </div>

@@ -28,7 +28,12 @@
                         <label>Referência para uma tarefa:</label>
                         <input class="form-control" name="tarefa_id" value ="${etiqueta.tarefa.id}"/>
                         <label>Titulo:</label>
-                        <input class="form-control" name="titulo" value="${etiqueta.titulo}"/>
+                        <select class="form-control" name="titulo">
+                            <option value="1">A fazer</option>
+                            <option value="2">Fazendo</option>
+                            <option value="3">Bloqueado</option>
+                            <option value="4">Feito</option>
+                        </select>
                         <br>
                         <div class="form-group col-md-3 col-sm-3 pull-right" >
                             <input type="submit" class="btn btn-primary" value="Cadastrar"/>
@@ -37,4 +42,4 @@
                 </center>
             </div>
         </div>
-        <%@include file="jspf/rodape.jspf" %>          
+        <%@include file="jspf/rodape.jspf" %>      

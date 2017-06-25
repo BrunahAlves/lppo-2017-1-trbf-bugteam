@@ -37,7 +37,22 @@
                                     <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
                                     <td><a href="listar.html?id=${etiqueta.id}">${etiqueta.usuario.nomecompleto}</td>
                                     <td><a href="listarTarefa.html?id=${etiqueta.tarefa.id}">${etiqueta.tarefa.titulo}</td>
-                                    <td>${etiqueta.titulo}</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${etiqueta.titulo == 1}">
+                                                A fazer
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 2}">
+                                                Fazendo
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 3}">
+                                                Bloqueado
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 4}">
+                                                Feito
+                                            </c:when>
+                                        </c:choose>
+                                    </td>
                                     <td><a href="excluirEtiqueta.html?id=${etiqueta.id}">&#128465;</a></td>
                                 </tr>
                             </c:forEach>

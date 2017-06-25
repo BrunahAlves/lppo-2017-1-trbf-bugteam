@@ -28,6 +28,7 @@
                                 <th>Titulo da tarefa</th><br>
                         <th>Descrição da tarefa</th><br>
                         <th>Data Prevista para conclusão</th><br>
+                        <th>Data da conclusão</th><br>
                         <th>Ações</th>
                         </tr>   
                         </thead>
@@ -38,6 +39,7 @@
                                     <td>${tarefa.titulo}</td>
                                     <td>${tarefa.descricao}</td>
                                     <td><fmt:formatDate value="${tarefa.data_concluir}" type="date" dateStyle="default" /></td>
+                                    <td><fmt:formatDate value="${tarefa.data_conclusao}" type="date" dateStyle="default" /></td>
                                     <td><a href="excluirTarefa.html?id=${tarefa.id}">&#128465;</a></td>
                                 </tr>
                             </c:forEach>

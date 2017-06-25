@@ -23,40 +23,52 @@
                 <h3 class="panel-title" style="text-align: center;">Quadro Kanban</h3>
             </div> 
             <div class="panel-body">
-                <div id="board">
-                    <div id="todo" class="section">
-                        <h1>A Fazer</h1>
-                        <c:forEach var="etiquetas" items="${etiquetas}">
-                            <c:if test="${etiquetas.titulo == 1}">
-                                <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                    <div id="doing" class="section">
-                        <h1>Fazendo</h1>
-                        <c:forEach var="etiquetas" items="${etiquetas}">
-                            <c:if test="${etiquetas.titulo == 2}">
-                                <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                    <div id="done" class="section">
-                        <h1>Bloqueado</h1>
-                        <c:forEach var="etiquetas" items="${etiquetas}">
-                            <c:if test="${etiquetas.titulo == 3}">
-                                <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                    <div id="doing" class="section">
-                        <h1>Feito</h1>
-                        <c:forEach var="etiquetas" items="${etiquetas}">
-                            <c:if test="${etiquetas.titulo == 4}">
-                                <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
-                            </c:if>
-                        </c:forEach>
-                    </div>
-                </div>  
+                <strong>Tarefas por usuário:</strong>
+                <form method="post">
+                    <select name="usuario" class=""> 
+                        <option value="0">Todos Usuários</option>
+                        <c:forEach var="etiqueta" items="${etiquetas}">  
+                            <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
+                        </c:forEach>  
+                    </select>
+                    <input type="submit" value="Filtrar" /><p></p>
+                </form>
+                <center>
+                    <div id="board">
+                        <div id="todo" class="section">
+                            <h1>A Fazer</h1>
+                            <c:forEach var="etiquetas" items="${etiquetas2}">
+                                <c:if test="${etiquetas.titulo == 1}">
+                                    <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
+                                    </c:if>
+                                </c:forEach>
+                        </div>
+                        <div id="doing" class="section">
+                            <h1>Fazendo</h1>
+                            <c:forEach var="etiquetas" items="${etiquetas2}">
+                                <c:if test="${etiquetas.titulo == 2}">
+                                    <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
+                                    </c:if>
+                                </c:forEach>
+                        </div>
+                        <div id="done" class="section">
+                            <h1>Bloqueado</h1>
+                            <c:forEach var="etiquetas" items="${etiquetas2}">
+                                <c:if test="${etiquetas.titulo == 3}">
+                                    <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
+                                    </c:if>
+                                </c:forEach>
+                        </div>
+                        <div id="doing" class="section">
+                            <h1>Feito</h1>
+                            <c:forEach var="etiquetas" items="${etiquetas2}">
+                                <c:if test="${etiquetas.titulo == 4}">
+                                    <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
+                                    </c:if>
+                                </c:forEach>
+                        </div>
+                    </div>  
+                </center>
             </div>
         </div>
         <%@include file="jspf/rodape.jspf" %>

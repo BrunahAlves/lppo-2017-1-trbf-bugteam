@@ -3,6 +3,7 @@
     Created on : 18/06/2017, 22:42:45
     Author     : Adriano
 --%>
+<%@page errorPage="../ERROS/erro.jsp"%>
 <%@include file="WEB-INF/jspf/menu.jspf" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="panel panel-primary" style="margin:20px;">

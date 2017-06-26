@@ -24,9 +24,9 @@
                     <table class="table table-striped">
                         <form method="post">
                         <select name="usuario">  
-                            <c:forEach var="etiqueta" items="${etiquetas}">  
-                                <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
-                            </c:forEach>  
+                            <c:forEach var="usuarios" items="${usuarios}">  
+                            <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
+                        </c:forEach> 
                         </select>
                         <input type="submit" value="Pesquisar" /><p>
                         <thead>
@@ -41,7 +41,23 @@
                                 <tr>
                                     <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
                                     <td><a href="listarTarefa.html?id=${etiqueta.tarefa.id}">${etiqueta.tarefa.titulo}</td>
-                                    <td>${etiqueta.titulo}</td>
+                                    <td>
+                                    <c:choose>
+                                            <c:when test="${etiqueta.titulo == 1}">
+                                                A fazer
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 2}">
+                                                Fazendo
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 3}">
+                                                Bloqueado
+                                            </c:when>
+                                            <c:when test="${etiqueta.titulo == 4}">
+                                                Feito
+                                            </c:when>
+                                        </c:choose>
+
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

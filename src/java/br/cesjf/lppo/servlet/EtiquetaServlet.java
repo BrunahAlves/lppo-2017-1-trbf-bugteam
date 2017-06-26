@@ -168,6 +168,11 @@ public class EtiquetaServlet extends HttpServlet {
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();
         //    etiquetas = dao.; JPQL - SELECT
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuarios = dao2.findUsuarioEntities();
+
+        request.setAttribute("usuarios", usuarios);
         request.setAttribute("etiquetas", etiquetas);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautor.jsp").forward(request, response);
     }
@@ -179,9 +184,14 @@ public class EtiquetaServlet extends HttpServlet {
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas2 = dao.getEtiquetaByAutor(id);
 
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuarios = dao2.findUsuarioEntities();
+
         List<Etiqueta> etiquetas = new ArrayList<>();
         etiquetas = dao.findEtiquetaEntities();
 
+        request.setAttribute("usuarios", usuarios);
         request.setAttribute("etiquetas", etiquetas);
         request.setAttribute("etiquetas2", etiquetas2);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautor.jsp").forward(request, response);

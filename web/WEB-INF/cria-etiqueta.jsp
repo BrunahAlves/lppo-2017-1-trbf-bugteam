@@ -28,10 +28,10 @@
                         <input class="form-control" type="text" name="tarefa_id"/>
                         <label>Titulo:</label>
                         <select class="form-control" name="titulo">
-                            <option value="1">A fazer</option>
-                            <option value="2">Fazendo</option>
-                            <option value="3">Bloqueado</option>
-                            <option value="4">Feito</option>
+                            <option value="A Fazer">A fazer</option>
+                            <option value="Fazendo">Fazendo</option>
+                            <option value="Bloqueado">Bloqueado</option>
+                            <option value="Feito">Feito</option>
                         </select>
                         <br>
                         <div class="form-group col-md-3 col-sm-3 pull-right" >

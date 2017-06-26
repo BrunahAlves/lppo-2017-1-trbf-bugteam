@@ -17,7 +17,7 @@
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span>
                         <span class="icon-bar"></span></button>
-                    <span class="panel-title"><a href="../../index.jsp">Trabalho Final LPPO</a></span>
+                    <span class="panel-title"><a href="index.jsp" title="Página Inicial">Trabalho Final LPPO</a></span>
                     <div class="collapse navbar-collapse" id="defaultNavbar1">
                         <ul class="nav navbar-nav">
                             <li></li>

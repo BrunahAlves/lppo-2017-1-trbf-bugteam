@@ -25,8 +25,7 @@
             <div class="panel-body">
                 <strong>Tarefas por usuário:</strong>
                 <form method="post">
-                    <select name="usuario" class=""> 
-                        <option value="0">Todos Usuários</option>
+                    <select name="usuario">
                         <c:forEach var="usuarios" items="${usuarios}">  
                             <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
                         </c:forEach>  
@@ -38,7 +37,7 @@
                         <div id="todo" class="section" style="width: 120px">
                             <h1>A Fazer</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
-                                <c:if test="${etiquetas.titulo == 1}">
+                                <c:if test="${etiquetas.titulo == 'A Fazer'}">
                                     <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
                                     </c:if>
                                 </c:forEach>
@@ -46,7 +45,7 @@
                         <div id="doing" class="section" style="width: 120px">
                             <h1>Fazendo</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
-                                <c:if test="${etiquetas.titulo == 2}">
+                                <c:if test="${etiquetas.titulo == 'Fazendo'}">
                                     <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
                                     </c:if>
                                 </c:forEach>
@@ -54,7 +53,7 @@
                         <div id="done" class="section" style="width: 120px">
                             <h1>Bloqueado</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
-                                <c:if test="${etiquetas.titulo == 3}">
+                                <c:if test="${etiquetas.titulo == 'Bloqueado'}">
                                     <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
                                     </c:if>
                                 </c:forEach>
@@ -62,7 +61,7 @@
                         <div id="doing" class="section" style="width: 120px">
                             <h1>Feito</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
-                                <c:if test="${etiquetas.titulo == 4}">
+                                <c:if test="${etiquetas.titulo =='Feito'}">
                                     <div id="c2" class="card">${etiquetas.tarefa.titulo}</div><p>
                                     </c:if>
                                 </c:forEach>

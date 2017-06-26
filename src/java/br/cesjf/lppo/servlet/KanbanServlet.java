@@ -54,39 +54,20 @@ public class KanbanServlet extends HttpServlet {
 
     private void doListarKanbanPorAutorPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("usuario"));
-        if (id == 0) {
-            List<Usuario> usuarios = new ArrayList<>();
-            UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
-            usuarios = dao2.findUsuarioEntities();
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuarios = dao2.findUsuarioEntities();
 
-            List<Etiqueta> etiquetas2 = new ArrayList<>();
-            EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
-            etiquetas2 = dao.findEtiquetaEntities();
+        List<Etiqueta> etiquetas2 = new ArrayList<>();
+        EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
+        etiquetas2 = dao.getEtiquetaByAutor(id);
 
-            List<Etiqueta> etiquetas = new ArrayList<>();
-            etiquetas = dao.findEtiquetaEntities();
+        List<Etiqueta> etiquetas = new ArrayList<>();
+        etiquetas = dao.findEtiquetaEntities();
 
-            request.setAttribute("usuarios", usuarios);
-            request.setAttribute("etiquetas", etiquetas);
-            request.setAttribute("etiquetas2", etiquetas2);
-            request.getRequestDispatcher("WEB-INF/kanbam.jsp").forward(request, response);
-        } else {
-            List<Usuario> usuarios = new ArrayList<>();
-            UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
-            usuarios = dao2.findUsuarioEntities();
-
-
-            List<Etiqueta> etiquetas2 = new ArrayList<>();
-            EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
-            etiquetas2 = dao.getEtiquetaByAutor(id);
-
-            List<Etiqueta> etiquetas = new ArrayList<>();
-            etiquetas = dao.findEtiquetaEntities();
-
-            request.setAttribute("usuarios", usuarios);
-            request.setAttribute("etiquetas", etiquetas);
-            request.setAttribute("etiquetas2", etiquetas2);
-            request.getRequestDispatcher("WEB-INF/kanbam.jsp").forward(request, response);
-        }
+        request.setAttribute("usuarios", usuarios);
+        request.setAttribute("etiquetas", etiquetas);
+        request.setAttribute("etiquetas2", etiquetas2);
+        request.getRequestDispatcher("WEB-INF/kanbam.jsp").forward(request, response);
     }
 }

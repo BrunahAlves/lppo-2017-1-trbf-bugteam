@@ -27,15 +27,15 @@
                 <form method="post">
                     <select name="usuario" class=""> 
                         <option value="0">Todos Usuários</option>
-                        <c:forEach var="etiqueta" items="${etiquetas}">  
-                            <option value="${etiqueta.usuario.id}">${etiqueta.usuario.nomecompleto}</option>  
+                        <c:forEach var="usuarios" items="${usuarios}">  
+                            <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
                         </c:forEach>  
                     </select>
                     <input type="submit" value="Filtrar" /><p></p>
                 </form>
                 <center>
                     <div id="board">
-                        <div id="todo" class="section">
+                        <div id="todo" class="section" style="width: 120px">
                             <h1>A Fazer</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
                                 <c:if test="${etiquetas.titulo == 1}">
@@ -43,7 +43,7 @@
                                     </c:if>
                                 </c:forEach>
                         </div>
-                        <div id="doing" class="section">
+                        <div id="doing" class="section" style="width: 120px">
                             <h1>Fazendo</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
                                 <c:if test="${etiquetas.titulo == 2}">
@@ -51,7 +51,7 @@
                                     </c:if>
                                 </c:forEach>
                         </div>
-                        <div id="done" class="section">
+                        <div id="done" class="section" style="width: 120px">
                             <h1>Bloqueado</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
                                 <c:if test="${etiquetas.titulo == 3}">
@@ -59,7 +59,7 @@
                                     </c:if>
                                 </c:forEach>
                         </div>
-                        <div id="doing" class="section">
+                        <div id="doing" class="section" style="width: 120px">
                             <h1>Feito</h1>
                             <c:forEach var="etiquetas" items="${etiquetas2}">
                                 <c:if test="${etiquetas.titulo == 4}">

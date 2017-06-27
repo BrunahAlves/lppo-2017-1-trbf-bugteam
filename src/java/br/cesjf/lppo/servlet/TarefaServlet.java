@@ -110,7 +110,11 @@ public class TarefaServlet extends HttpServlet {
         try {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             Date data = formato.parse(request.getParameter("dt-concluir"));
-            Date dtConclusao = formato.parse(request.getParameter("dt-concluida"));
+            Date dtConclusao = null;
+            if (request.getParameter("dt-concluida").isEmpty()) {
+            } else {
+                dtConclusao = formato.parse(request.getParameter("dt-concluida"));
+            }
             TarefaJpaController dao = new TarefaJpaController(ut, emf);
             Long id = Long.parseLong(request.getParameter("id"));
             Tarefa tarefa = dao.findTarefa(id);
@@ -123,6 +127,7 @@ public class TarefaServlet extends HttpServlet {
             response.sendRedirect("listarTarefa.html");
 
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendRedirect("listarTarefa.html");
 
         }

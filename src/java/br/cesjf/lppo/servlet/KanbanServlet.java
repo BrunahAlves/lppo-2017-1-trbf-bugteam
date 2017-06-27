@@ -47,13 +47,16 @@ public class KanbanServlet extends HttpServlet {
         List<Etiqueta> etiquetas = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();
-
-        request.setAttribute("etiquetas", etiquetas);
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuarios = dao2.findUsuarioEntities();
+        request.setAttribute("usuarios", usuarios);
         request.getRequestDispatcher("WEB-INF/kanbam.jsp").forward(request, response);
     }
 
     private void doListarKanbanPorAutorPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("usuario"));
+       
         List<Usuario> usuarios = new ArrayList<>();
         UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
         usuarios = dao2.findUsuarioEntities();

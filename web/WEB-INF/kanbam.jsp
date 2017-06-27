@@ -25,12 +25,12 @@
             <div class="panel-body">
                 <strong>Tarefas por usuário:</strong>
                 <form method="post">
-                    <select name="usuario">
-                        <c:forEach var="usuarios" items="${usuarios}">  
+                        <select name="usuario">  
+                            <c:forEach var="usuarios" items="${usuarios}">  
                             <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
-                        </c:forEach>  
-                    </select>
-                    <input type="submit" value="Filtrar" /><p></p>
+                        </c:forEach> 
+                        </select>
+                        <input type="submit" value="Pesquisar" /><p>
                 </form>
                 <center>
                     <div id="board">

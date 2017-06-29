@@ -23,28 +23,28 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <form method="post">
-                        <select name="usuario">  
-                            <c:forEach var="usuarios" items="${usuarios}">  
-                            <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
-                        </c:forEach> 
-                        </select>
-                        <input type="submit" value="Pesquisar" /><p>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Referência para uma tarefa</th><br>
-                        <th>Título</th><br>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="etiqueta" items="${etiquetas2}">
+                            <select name="usuario">  
+                                <c:forEach var="usuarios" items="${usuarios}">  
+                                    <option value="${usuarios.id}">${usuarios.nomecompleto}</option>  
+                                </c:forEach> 
+                            </select>
+                            <input class="btn-primary" type="submit" value="Pesquisar" /><p>
+                            <thead>
                                 <tr>
-                                    <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
-                                    <td><a href="listarTarefa.html?id=${etiqueta.tarefa.id}">${etiqueta.tarefa.titulo}</td>
-                                    <td>${etiqueta.titulo}</td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+                                    <th>Id</th>
+                                    <th>Referência para uma tarefa</th><br>
+                            <th>Título</th><br>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="etiqueta" items="${etiquetas2}">
+                                    <tr>
+                                        <td><a href="editarEtiqueta.html?id=${etiqueta.id}">${etiqueta.id}</a></td>
+                                        <td><a href="listarTarefa.html?id=${etiqueta.tarefa.id}">${etiqueta.tarefa.titulo}</td>
+                                        <td>${etiqueta.titulo}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
                     </table>
                 </div>
                 <br>

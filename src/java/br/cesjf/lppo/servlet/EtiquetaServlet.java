@@ -204,20 +204,31 @@ public class EtiquetaServlet extends HttpServlet {
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
         etiquetas = dao.findEtiquetaEntities();
         //    etiquetas = dao.; JPQL - SELECT
+        List<Usuario> usuario = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuario = dao2.findUsuarioEntities();
+
+        request.setAttribute("usuario", usuario);
         request.setAttribute("etiquetas", etiquetas);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautoretitulo.jsp").forward(request, response);
     }
 
     private void doListarEtiquetaPorAutoreTituloPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String titulo = request.getParameter("titulo");
+        Long id = Long.parseLong(request.getParameter("id"));
 
         List<Etiqueta> etiquetas2 = new ArrayList<>();
         EtiquetaJpaController dao = new EtiquetaJpaController(ut, emf);
-        etiquetas2 = dao.getEtiquetaByTitulo(titulo);
+        etiquetas2 = dao.getEtiquetaByAutorAndTitulo(titulo, id);
 
         List<Etiqueta> etiquetas = new ArrayList<>();
         etiquetas = dao.findEtiquetaEntities();
 
+        List<Usuario> usuario = new ArrayList<>();
+        UsuarioJpaController dao2 = new UsuarioJpaController(ut, emf);
+        usuario = dao2.findUsuarioEntities();
+
+        request.setAttribute("usuario", usuario);
         request.setAttribute("etiquetas", etiquetas);
         request.setAttribute("etiquetas2", etiquetas2);
         request.getRequestDispatcher("WEB-INF/listar-etiquetasporautoretitulo.jsp").forward(request, response);

@@ -158,38 +158,51 @@ public class EtiquetaJpaController implements Serializable {
             em.close();
         }
     }
-    
-    public List<Etiqueta> getEtiquetaByAutor(Long id)  {
+
+    public List<Etiqueta> getEtiquetaByAutor(Long id) {
         EntityManager em = getEntityManager();
-       
+
         try {
-            
+
             TypedQuery<Etiqueta> q = em.createQuery("SELECT e FROM Etiqueta e WHERE e.usuario.id = :Long", Etiqueta.class);
             q.setParameter("Long", id);
             System.out.println(q.getResultList());
-            
+
             return q.getResultList();
-        } 
-        finally {
+        } finally {
             em.close();
         }
     }
-    
-    public List<Etiqueta> getEtiquetaByTitulo(String titulo)  {
+
+    public List<Etiqueta> getEtiquetaByTitulo(String titulo) {
         EntityManager em = getEntityManager();
-       
+
         try {
-            
+
             TypedQuery<Etiqueta> q = em.createQuery("SELECT e FROM Etiqueta e WHERE e.titulo = :String ", Etiqueta.class);
             q.setParameter("String", titulo);
             System.out.println(q.getResultList());
-            
+
             return q.getResultList();
-        } 
-        finally {
+        } finally {
             em.close();
         }
     }
-    
-    
+
+    public List<Etiqueta> getEtiquetaByAutorAndTitulo(String titulo, Long id) {
+        EntityManager em = getEntityManager();
+
+        try {
+
+            TypedQuery<Etiqueta> q = em.createQuery("SELECT e FROM Etiqueta e WHERE e.titulo = :String AND e.usuario.id = :Long ", Etiqueta.class);
+            q.setParameter("String", titulo);
+            q.setParameter("Long", id);
+            System.out.println(q.getResultList());
+
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 }
